@@ -17,7 +17,7 @@ Counts the total number of orders placed.
 ```sql
 SELECT COUNT(order_id) AS Total_orders FROM orders;
 ```
-![alt text](5.png)
+![alt text](./Results/5.png)
 
 ### 2. Total Revenue Generated
 Calculates the total revenue from pizza sales.
@@ -26,7 +26,7 @@ SELECT ROUND(SUM(od.quantity * p.price), 2) AS Total_revenue
 FROM order_details AS od
 JOIN pizzas AS p ON od.pizza_id = p.pizza_id;
 ```
-![alt text](6-1.png)
+![alt text](./Results/6-1.png)
 
 ### 3. Highest Priced Pizza
 Identifies the pizza with the highest price.
@@ -37,7 +37,7 @@ JOIN pizzas AS p ON pt.pizza_type_id = p.pizza_type_id
 ORDER BY p.price DESC
 LIMIT 1;
 ```
-![alt text](7.png)
+![alt text](./Results/7.png)
 
 ### 4. Most Common Pizza Size Ordered
 Finds the most frequently ordered pizza size.
@@ -48,7 +48,7 @@ JOIN order_details AS od ON p.pizza_id = od.pizza_id
 GROUP BY size
 ORDER BY Total_order DESC;
 ```
-![alt text](8.png)
+![alt text](./Results/8.png)
 
 ### 5. Top 5 Most Ordered Pizza Types
 Displays the top 5 pizzas by quantity ordered.
@@ -61,7 +61,7 @@ GROUP BY pt.name
 ORDER BY Total_order DESC
 LIMIT 5;
 ```
-![alt text](9.png)
+![alt text](./Results/9.png)
 
 ### 6. Total Quantity by Pizza Category
 Aggregates the quantity ordered per pizza category.
@@ -73,7 +73,7 @@ JOIN order_details AS od ON od.pizza_id = p.pizza_id
 GROUP BY pt.category
 ORDER BY Total_quantity DESC;
 ```
-![alt text](10.png)
+![alt text](./Results/10.png)
 
 ### 7. Order Distribution by Hour
 Analyzes the number of orders by each hour of the day.
@@ -82,7 +82,7 @@ SELECT HOUR(order_time) AS Hour, COUNT(order_id) AS Total_order
 FROM orders
 GROUP BY HOUR(order_time);
 ```
-![alt text](11.png)
+![alt text](./Results/11.png)
 
 ### 8. Category-wise Pizza Distribution
 Counts how many pizzas are in each category.
@@ -91,7 +91,7 @@ SELECT category, COUNT(name)
 FROM pizza_types
 GROUP BY category;
 ```
-![alt text](12.png)
+![alt text](./Results/12.png)
 
 ### 9. Average Number of Pizzas Ordered Per Day
 Uses a CTE to calculate average pizzas ordered daily.
@@ -104,7 +104,7 @@ WITH Quantity_Orders AS (
 )
 SELECT ROUND(AVG(total_quantity), 0) AS avg_quantity_per_day FROM Quantity_Orders;
 ```
-![alt text](13.png)
+![alt text](./Results/13.png)
 
 ### 10. Top 3 Pizza Types by Revenue
 Finds top-selling pizzas based on revenue.
@@ -117,7 +117,7 @@ GROUP BY pt.name
 ORDER BY Total_revenue DESC
 LIMIT 3;
 ```
-![alt text](14.png)
+![alt text](./Results/14.png)
 
 ### 11. Revenue Contribution by Pizza Category
 Calculates the percentage of revenue contributed by each category.
@@ -134,7 +134,7 @@ SELECT category, total_revenue,
 FROM CategoryRevenue
 ORDER BY total_revenue DESC;
 ```
-![alt text](15.png)
+![alt text](./Results/15.png)
 
 ### 12. Cumulative Revenue Over Time
 Tracks revenue growth over time using a cumulative sum.
@@ -151,7 +151,7 @@ SELECT order_date, daily_revenue,
 FROM DailyRevenue
 ORDER BY order_date;
 ```
-![alt text](16.png)
+![alt text](./Results/16.png)
 
 ### 13. Top 3 Pizzas by Revenue per Category
 Ranks pizzas within each category by revenue and selects the top 3.
@@ -173,7 +173,7 @@ FROM RankedPizzaRevenue
 WHERE rn <= 3
 ORDER BY category, rn;
 ```
-![alt text](17.png)
+![alt text](./Results/17.png)
 
 ---
 
